@@ -1,8 +1,8 @@
 import { Context, type MiddlewareHandler } from "hono";
-import { type CacheConfig } from "../cache/cache.config";
-import { type CacheStore } from "../store/types";
+import { type CacheConfig } from "../config/types";
+import { type CacheStore } from "../types";
 
-export const cacheMiddleware = ({
+export const middleware = ({
   store,
   config,
 }: {

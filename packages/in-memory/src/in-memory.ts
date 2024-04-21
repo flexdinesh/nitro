@@ -1,5 +1,5 @@
 import { LRUCache } from "lru-cache";
-import { CacheStore } from "./types";
+import { type CacheStore } from "@nitro-cache/cache";
 
 export function createInMemoryStore(): CacheStore {
   const options: LRUCache.Options<{}, {}, {}> = {

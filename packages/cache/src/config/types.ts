@@ -1,3 +1,5 @@
+import { type HonoRequest } from "hono";
+
 export type CacheKey = string;
 
 export type CacheStrategyType =
@@ -70,16 +72,38 @@ export type CacheEntry = {
   };
 };
 
-type CacheableStrategy = Exclude<CacheStrategy, { type: "NO-STORE" }>;
+export type CacheableStrategy = Exclude<CacheStrategy, { type: "NO-STORE" }>;
 
-export type CacheStore = {
-  get: (arg: { key: CacheKey }) => Promise<CacheEntry | undefined>;
-  set: (
-    arg: {
-      key: CacheKey;
-      data: CacheEntry["response"]["body"];
-    } & Pick<CacheEntryMeta, "request"> & {
-        strategy: CacheableStrategy;
-      }
-  ) => Promise<CacheKey>;
+
+type RESTRequestConfig = {
+  type: "RESTRequest";
+  /**
+   * The origin URL without trailing slash.
+   * Eg. https://myapiorigin.com
+   */
+  origin: string;
+  /**
+   * The URL path with a leading slash.
+   * Eg. /my/path/to/data
+   *
+   * Or a function that takes the path and returns true/false when the path is a match.
+   */
+  path: string | ((path: string) => boolean);
+  /**
+   * The function to derive the cache entry key from the request.
+   * This is optional. The request origin+path will be used as key
+   * if this function is not defined.
+   */
+  cacheKey?: (request: HonoRequest) => CacheKey;
+} & Pick<CacheEntryMeta, "strategy">;
+
+type RequestConfig = RESTRequestConfig;
+
+export type CacheConfig = {
+  /**
+   * The origin URL to route requests that don't have a matcher defined.
+   * Eg. https://myapiorigin.com
+   */
+  origin: string;
+  matchers: RequestConfig[];
 };

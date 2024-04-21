@@ -8,9 +8,10 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@nitro-cache/cache": "workspace:*",
+    "@nitro-cache/in-memory": "workspace:*",
     "@hono/node-server": "^1.10.0",
-    "hono": "^3.11.11",
-    "lru-cache": "^10.2.0"
+    "hono": "^3.11.11"
   },
   "devDependencies": {
     "tsx": "^4.7.2",

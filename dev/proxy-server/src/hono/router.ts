@@ -1,16 +1,9 @@
 import { Hono } from "hono";
 
-type Bindings = {
-  TOKEN: string;
-};
+type Bindings = {};
 
-type Variables = {
-  user: {
-    id: string;
-    name: string
-  };
-};
+type Variables = {};
 
 export const router = new Hono<{ Bindings: Bindings; Variables: Variables }>();
 
-export type Router = typeof router
+export type Router = typeof router;

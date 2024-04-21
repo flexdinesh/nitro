@@ -1,9 +1,9 @@
 import { logger } from "hono/logger";
 import { cors } from "hono/cors";
-import { cacheMiddleware } from "./cache-middleware";
+import { middleware } from "@nitro-cache/cache";
+import { createInMemoryStore } from "@nitro-cache/in-memory";
 import { type Router } from "./router";
-import { createInMemoryStore } from "../store/in-memory";
-import { config } from "../cache/cache.config";
+import { config } from "../cache.config";
 
 const store = createInMemoryStore();
 
@@ -21,5 +21,5 @@ export function setupRoutes(router: Router) {
 
   router.get("/__health", (c) => c.json({ status: "ok" }));
 
-  router.use("*", cacheMiddleware({ store, config }));
+  router.use("*", middleware({ store, config }));
 }
