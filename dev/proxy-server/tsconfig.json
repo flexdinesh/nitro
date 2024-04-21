@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "noErrorTruncation": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"]
+  }
+}

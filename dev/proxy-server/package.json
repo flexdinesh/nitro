@@ -1,0 +1,26 @@
+{
+  "name": "proxy-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.10.0",
+    "hono": "^3.11.11",
+    "lru-cache": "^10.2.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  },
+  "author": "Dinesh Pandiyan <flexdinesh@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexdinesh/nitro",
+    "directory": "dev/proxy-server"
+  }
+}

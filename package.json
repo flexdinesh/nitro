@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules && pnpm -r run clean",
+    "dev:servers": "pnpm --stream --filter \"./dev/**\" run dev",
+    "dev:packages": "pnpm --stream --filter \"./packages/**\" run dev"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  }
+}
